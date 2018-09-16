@@ -1,0 +1,15 @@
+<div *ngIf="!showError" class="list-wrapper"  data-infinite-scroll
+     debounce
+     [scrollWindow]="false"
+     [infiniteScrollDistance]="scrollDistance"
+     [infiniteScrollUpDistance]="scrollUpDistance"
+     [infiniteScrollThrottle]="throttle"
+     (scrolled)="loadMore()">
+  <app-repo-item *ngFor="let repo of list" [repo]="repo"
+                    [routerLink]="['/repo', repo.name]">
+  </app-repo-item>
+</div>
+
+<div class="error" *ngIf="showError">
+  <h3>Error, not found subreddit</h3>
+</div>

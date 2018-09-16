@@ -1,0 +1,53 @@
+<div class="main-wrapper" data-infinite-scroll
+     debounce
+     [scrollWindow]="false"
+     [infiniteScrollDistance]="scrollDistance"
+     [infiniteScrollUpDistance]="scrollUpDistance"
+     [infiniteScrollThrottle]="throttle"
+     (scrolled)="loadMoreContributors()">
+  <div *ngIf="loader" class="loader">
+    <fa name="spinner" size="5x" animation="spin"></fa>
+  </div>
+<div *ngIf="!loader" class="repo-wrapper">
+  <div class="title-container">
+    <p class="title">{{repo.name}}</p>
+  </div>
+  <div class="main-container">
+    <div class="image-container">
+      <img [src]="repo.image" alt="">
+    </div>
+    <div class="text-container">
+      <p class="text">{{repo.description}}</p>
+    </div>
+  </div>
+  <div class="date">
+    <p>Created at: <fa name="calendar"></fa>{{repo.created | date}}</p>
+    <p>Last update at: <fa name="calendar"></fa>{{repo.updated | date}}</p>
+  </div>
+  <hr>
+  <div class="additional-info-container">
+    <p><fa name="users"></fa>{{contributors.length}}</p>
+    <p><fa name="star"></fa>{{repo.stars}}</p>
+    <p><fa name="user"></fa>{{repo.owner}}</p>
+    <p><fa name="link"></fa>
+      <a target="_blank" [href]="repo.link">go to original</a></p>
+  </div>
+</div>
+
+  <h2 class="contributors-title">Contributors</h2>
+
+<div *ngIf="!loader">
+  <div *ngFor="let contributor of contributors"  class="contributors-container">
+    <div class="contributor-head">
+      <div class="contributor-data">
+        <div>
+          <img [src]="contributor.avatar_url" alt="">
+        </div>
+        <p class="author"><fa name="user"></fa>{{contributor.login}}</p>
+      </div>
+      <p class="contribution">Contributions <b>{{contributor.contributions}}</b></p>
+    </div>
+  </div>
+</div>
+
+</div>

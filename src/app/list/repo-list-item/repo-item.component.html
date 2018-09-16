@@ -1,0 +1,15 @@
+<div class="article-wrapper">
+  <div class="preview-wrapp">
+    <img [src]="repo.image" alt="">
+  </div>
+  <div class="main-content">
+    <div>
+      <p class="title">{{repo.name}}</p>
+    </div>
+    <div class="additional">
+      <p><fa name="star"></fa>{{repo.stars}}</p>
+      <p><fa name="eye"></fa>{{repo.watchers}}</p>
+      <p><fa name="calendar"></fa>{{repo.created | date}}</p>
+    </div>
+  </div>
+</div>
