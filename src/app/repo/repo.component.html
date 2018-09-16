@@ -37,7 +37,7 @@
   <h2 class="contributors-title">Contributors</h2>
 
 <div *ngIf="!loader">
-  <div *ngFor="let contributor of contributors"  class="contributors-container">
+  <div *ngFor="let contributor of contributors" [routerLink]="['/contributor', contributor.login]"  class="contributors-container">
     <div class="contributor-head">
       <div class="contributor-data">
         <div>

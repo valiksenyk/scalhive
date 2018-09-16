@@ -12,7 +12,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   { path: 'contributor/:name', component: ContributorComponent},
-  { path: '**', redirectTo: '/list'}
+  { path: '**', redirectTo: '/list'},
 ];
 
 @NgModule({

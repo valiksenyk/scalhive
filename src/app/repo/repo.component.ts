@@ -19,7 +19,7 @@ export class RepoComponent implements OnInit {
 
   name: string;
   repo: IRepo;
-  contributors: Array<IContributor>;
+  contributors: Array<IContributor> = [];
   loader: boolean;
   throttle = 300;
   scrollDistance = 1;
@@ -29,7 +29,6 @@ export class RepoComponent implements OnInit {
   constructor(@Inject(APP_CONFIG) private _config: IAppConfig,
               private _route: ActivatedRoute,
               private _communicationService: CommunicationService) {
-    // this.redditOrigin = _config.redditOrigin;
   }
 
   ngOnInit() {
@@ -37,7 +36,6 @@ export class RepoComponent implements OnInit {
     this.name = this._route.snapshot.paramMap.get('name');
     this._communicationService.getRepo(this.name)
       .subscribe((res: IRepo) => {
-        console.log(res);
         this.repo = res;
         this.loader = false;
       });
@@ -45,7 +43,6 @@ export class RepoComponent implements OnInit {
     this._communicationService.getRepoContributors(this.name)
       .subscribe((res: Array<IContributor>) => {
         this.contributors = res;
-        console.log(this.contributors);
       });
   }
 

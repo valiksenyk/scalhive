@@ -1,3 +1,27 @@
-<p>
-  contributor works!
-</p>
+<div class="main-wrapper">
+  <div *ngIf="loader" class="loader">
+    <fa name="spinner" size="5x" animation="spin"></fa>
+  </div>
+  <div *ngIf="!loader" class="repo-wrapper">
+    <div class="title-container">
+      <p class="title">{{contributor.login}}</p>
+    </div>
+    <div class="main-container">
+      <div class="image-container">
+        <img [src]="contributor.avatar_url" alt="">
+      </div>
+      <div class="text-container">
+        <p class="name">{{contributor.name}}</p>
+        <p class="text">{{contributor.bio}}</p>
+      </div>
+    </div>
+    <hr>
+    <div class="additional-info-container">
+      <p><fa name="users"></fa>{{contributor.followers}}</p>
+      <p><fa name="laptop"></fa>{{contributor.public_repos}}</p>
+      <p><fa name="map"></fa>{{contributor.location}}</p>
+      <p><fa name="link"></fa>
+        <a target="_blank" [href]="contributor.html_url">go to original</a></p>
+    </div>
+  </div>
+</div>

@@ -18,20 +18,4 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-# Components 
-
-## list.component 
-Displays a list of articles, [infinity-scroll](https://www.npmjs.com/package/ngx-infinite-scroll) is used for paging.
-
-## article.component 
-Displays chosen article and all comments. I take comments recursively. New comments i storу in localStorage. 
-
-# Services 
-
-## Communication.service
-Used for communication with API. All api endpoints stored in App.config.
-
-## Comment.service 
-Just for managing user comments (write/get to localStorage)
-
 Also in project used Bootstrap 4

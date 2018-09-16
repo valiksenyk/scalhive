@@ -1,7 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {APP_CONFIG, IAppConfig} from '../app.config';
-import {Subject} from 'rxjs/Subject';
 import {map} from 'rxjs/operators';
 
 export interface IRepo {
@@ -21,21 +20,26 @@ export interface IRepo {
 export interface IUser {
   id: string;
   login: string;
-  avatar: string;
+  name: string;
+  avatar_url: string;
+  bio: string;
+  location: string;
+  followers: number;
+  public_repos: number;
+  html_url: string;
 }
 
 @Injectable()
 export class CommunicationService {
-
-  searchSubredditsSubject = new Subject<any>();
   repos: Array<IRepo> = [];
 
-  constructor(private _http: HttpClient, @Inject(APP_CONFIG) private _config: IAppConfig) {}
+  constructor(private _http: HttpClient, @Inject(APP_CONFIG) private _config: IAppConfig) {
+  }
 
   getRepos() {
     return this._http.get(`${this._config.apiEndpoint}users/${this._config.name}/repos`).pipe(
       map(response => {
-       return this._parseResponse(response);
+        return this._parseResponse(response);
       }));
   }
 
@@ -51,17 +55,17 @@ export class CommunicationService {
     );
   }
 
-  searchSubreddits(subreddit) {
-    this.searchSubredditsSubject.next();
+  getUser(name: string) {
+    return this._http.get(`${this._config.apiEndpoint}users/${name}`);
   }
 
-    private _parseResponse(response): Array<IRepo> {
+  private _parseResponse(response): Array<IRepo> {
+    this.repos = [];
     for (const item of response) {
       this.repos.push(this._createRepoObj(item));
     }
     return this.repos;
   }
-
 
   private _createRepoObj(resObj): IRepo {
     return {

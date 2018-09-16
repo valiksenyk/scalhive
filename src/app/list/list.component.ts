@@ -9,28 +9,19 @@ import {CommunicationService, IRepo} from '../services/communication.service';
 export class ListComponent implements OnInit {
 
   list: Array<IRepo> = [];
-  next: string;
   showError: boolean;
-  throttle = 300;
-  scrollDistance = 1;
-  scrollUpDistance = 2;
 
   constructor(private _communicationService: CommunicationService) {
-    _communicationService.searchSubredditsSubject.subscribe(() => {
-      this.next = null;
-      this.list = [];
-      this.getArticles();
-    });
   }
 
   ngOnInit() {
-    this.getArticles();
+    this.getRepos();
   }
 
-  public getArticles() {
+  public getRepos() {
     this._communicationService.getRepos()
       .subscribe((response: Array<IRepo>) => {
-        this.list = response;
+          this.list = response;
         },
         error => {
           if (error.status === 404) {
@@ -38,9 +29,4 @@ export class ListComponent implements OnInit {
           }
         });
   }
-
-  public loadMore() {
-    this.getArticles();
-  }
-
 }

@@ -14,7 +14,6 @@ import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import {FormsModule} from '@angular/forms';
 import { RepoComponent } from './repo/repo.component';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
-import {CommentService} from './services/comment.service';
 import { HeaderComponent } from './header/header.component';
 import { ContributorComponent } from './contributor/contributor.component';
 
@@ -40,7 +39,6 @@ import { ContributorComponent } from './contributor/contributor.component';
   providers: [
     {provide: APP_CONFIG, useValue: AppConfig},
     CommunicationService,
-    CommentService
   ],
   bootstrap: [AppComponent]
 })

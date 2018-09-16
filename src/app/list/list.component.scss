@@ -9,6 +9,8 @@
 
   app-repo-item {
     width: 80%;
+    max-width: 1000px;
+    min-width: 380px;
     box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);
   }
 }
@@ -16,4 +18,10 @@
 .error {
   margin-top: 70px;
   text-align: center;
+}
+
+@media only screen and (max-width: 580px) {
+  app-repo-item {
+    width: 100%;
+  }
 }

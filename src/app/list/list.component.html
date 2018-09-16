@@ -1,10 +1,4 @@
-<div *ngIf="!showError" class="list-wrapper"  data-infinite-scroll
-     debounce
-     [scrollWindow]="false"
-     [infiniteScrollDistance]="scrollDistance"
-     [infiniteScrollUpDistance]="scrollUpDistance"
-     [infiniteScrollThrottle]="throttle"
-     (scrolled)="loadMore()">
+<div *ngIf="!showError" class="list-wrapper">
   <app-repo-item *ngFor="let repo of list" [repo]="repo"
                     [routerLink]="['/repo', repo.name]">
   </app-repo-item>
